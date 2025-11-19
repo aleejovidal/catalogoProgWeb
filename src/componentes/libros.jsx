@@ -1,15 +1,16 @@
 import Libro from "./libro";
-export default function Libros({listaLibros}) {
+
+export default function Libros({ listaLibros = [], horizontal = false, className = "" }) {
+    const classes = `listaLibros${horizontal ? ' horizontal' : ''} ${className}`.trim();
     return (
-        <div className="listaLibros">
+        <div className={classes}>
             {listaLibros.map((libro, index) => (
-                <Libro 
-                    key={index}
+                <Libro
+                    id={libro.id}
                     titulo={libro.titulo}
                     autor={libro.autor}
                     genero={libro.genero}
-                    año={libro.año}
-                    imagenLibro={libro.imagenLibro}
+                    imagen={libro.imagen}
                 />
             ))}
         </div>
